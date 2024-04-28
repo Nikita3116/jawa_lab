@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -45,5 +46,9 @@ public class Main {
         }
 
         System.out.println(arrayList.get(min_i));
+        System.out.println("Kulinich");
+        Date now = new Date();
+        System.out.println("Задание получено: Fri Feb 09 14:30:00 GMT+03:00 2024");
+        System.out.println("Текущая дата и время: " + now);
     }
 }

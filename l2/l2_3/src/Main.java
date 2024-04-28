@@ -1,95 +1,78 @@
-import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Размер матрицы: ");
-        Scanner console = new Scanner(System.in);
-        int n1 = console.nextInt();
+        System.out.println("Введите количество строк матрицы:");
+        int rows = scanner.nextInt();
+        System.out.println("Введите количество столбцов матрицы:");
+        int cols = scanner.nextInt();
 
-        double[][] twoArray = new double[n1][n1];
+        double[][] matrix = new double[rows][cols];
 
-        System.out.println("Диапазон случайных чисел: ");
-        int n2 = console.nextInt();
-        int n3 = console.nextInt();
+        // Заполнение матрицы случайными числами
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = Math.random() * 20.0 - 10.0;
+            }
+        }
 
-        for (int i = 0; i < n1; i++) {
-            for (int j = 0; j < n1; j++) {
-                twoArray[i][j] = (Math.random() * ((n3 - n2))) + n2;
-                System.out.print(twoArray[i][j] + " ");
+        System.out.println("Сгенерированная матрица:");
+        for (double[] row : matrix) {
+            for (double num : row) {
+                System.out.printf("%.2f ", num);
             }
             System.out.println();
         }
 
-        int one_i = 0;
-        double[] oneArray = new double[n1 * n1];
-        for (int i = 0; i < n1; i++) {
-            for (int j = 0; j < n1; j++) {
-                oneArray[one_i] = twoArray[i][j];
-                one_i++;
+        ArrayList<Double> maxIncreasing = new ArrayList<>();
+        ArrayList<Double> maxDecreasing = new ArrayList<>();
+        for (double[] row : matrix) {
+            ArrayList<Double> temp = findMaxSequence(row, true);
+            if (temp.size() > maxIncreasing.size()) {
+                maxIncreasing = temp;
+            }
+            temp = findMaxSequence(row, false);
+            if (temp.size() > maxDecreasing.size()) {
+                maxDecreasing = temp;
             }
         }
 
-        ArrayList<Double> Vozrost_1 = new ArrayList<>();
-        ArrayList<Double> Vozrost_2 = new ArrayList<>();
-        ArrayList<Double> Ybuv_1 = new ArrayList<>();
-        ArrayList<Double> Ybuv_2 = new ArrayList<>();
+        System.out.print("Наибольшая возрастающая последовательность: ");
+        for (double num : maxIncreasing) {
+            System.out.printf("%.2f ", num);
+        }
+        System.out.println();
 
-        int new_arr = 0;
-        for (int i = 0; i < n1 * n1; i++) {
-            if (i == 0) {
-                Vozrost_1.add(oneArray[i]);
-            } else if (oneArray[i] > oneArray[i - 1]) {
-                Vozrost_1.add(oneArray[i]);
-            } else if (Vozrost_1.size() > Vozrost_2.size()) {
-                Vozrost_2 = (ArrayList<Double>) Vozrost_1.clone();
-                Vozrost_1.clear();
-                new_arr = 1;
-            }
-            if (new_arr == 1){
-                Vozrost_1.add(oneArray[i]);
-                new_arr = 0;
+        System.out.print("Наибольшая убывающая последовательность: ");
+        for (double num : maxDecreasing) {
+            System.out.printf("%.2f ", num);
+        }
+        System.out.println();
+        scanner.close();
+    }
+
+    private static ArrayList<Double> findMaxSequence(double[] row, boolean isIncreasing) {
+        ArrayList<Double> maxSequence = new ArrayList<>();
+        ArrayList<Double> currentSequence = new ArrayList<>();
+
+        for (int i = 0; i < row.length; i++) {
+            if (i == 0 || (isIncreasing && row[i] > row[i - 1]) || (!isIncreasing && row[i] < row[i - 1])) {
+                currentSequence.add(row[i]);
+            } else {
+                if (currentSequence.size() > maxSequence.size()) {
+                    maxSequence = new ArrayList<>(currentSequence);
+                }
+                currentSequence.clear();
+                currentSequence.add(row[i]);
             }
         }
-
-        int new_arr2 = 0;
-        for (int i = 0; i < n1 * n1; i++) {
-            if (i == 0) {
-                Ybuv_1.add(oneArray[i]);
-            } else if (oneArray[i] < oneArray[i - 1]) {
-                Ybuv_1.add(oneArray[i]);
-            } else if (Ybuv_1.size() > Ybuv_2.size()) {
-                Ybuv_2 = (ArrayList<Double>) Ybuv_1.clone();
-                Ybuv_1.clear();
-                new_arr2 = 1;
-            }
-            if (new_arr2 == 1){
-                Ybuv_1.add(oneArray[i]);
-                new_arr2 = 0;
-            }
+        if (currentSequence.size() > maxSequence.size()) {
+            maxSequence = new ArrayList<>(currentSequence);
         }
 
-        System.out.println("Возрастающие числа");
-        if (Vozrost_2.size() > Vozrost_1.size()){
-            for (int i = 0; i < Vozrost_2.size(); i++) {
-                System.out.println(Vozrost_2.get(i));
-            }
-        } else {
-            for (int i = 0; i < Vozrost_1.size(); i++) {
-                System.out.println(Vozrost_1.get(i));
-            }
-        }
-
-        System.out.println("Убывающие числа");
-        if (Ybuv_2.size() > Ybuv_1.size()){
-            for (int i = 0; i < Ybuv_2.size(); i++) {
-                System.out.println(Ybuv_2.get(i));
-            }
-        } else {
-            for (int i = 0; i < Ybuv_1.size(); i++) {
-                System.out.println(Ybuv_1.get(i));
-            }
-        }
+        return maxSequence; // Возвращаем массив с наибольшей последовательностью
     }
 }

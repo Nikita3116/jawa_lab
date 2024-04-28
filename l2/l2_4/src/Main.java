@@ -2,51 +2,59 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Размер матрицы: ");
-        Scanner console = new Scanner(System.in);
-        int n1 = console.nextInt();
+        Scanner scanner = new Scanner(System.in);
 
-        double[][] twoArray = new double[n1][n1];
+        System.out.println("Введите количество строк матрицы:");
+        int rows = scanner.nextInt();
+        System.out.println("Введите количество столбцов матрицы:");
+        int cols = scanner.nextInt();
 
-        System.out.println("Диапазон случайных чисел: ");
-        int n2 = console.nextInt();
-        int n3 = console.nextInt();
+        double[][] matrix = new double[rows][cols];
 
-        for (int i = 0; i < n1; i++) {
-            for (int j = 0; j < n1; j++) {
-                twoArray[i][j] = (Math.random() * ((n3 - n2))) + n2;
-                System.out.print(twoArray[i][j] + " ");
+        // Заполнение матрицы случайными числами
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = Math.random() * 20.0 - 10.0;
+            }
+        }
+
+        System.out.println("Сгенерированная матрица:");
+        for (double[] row : matrix) {
+            for (double num : row) {
+                System.out.printf("%.2f ", num);
             }
             System.out.println();
         }
 
-        double[] SumArray = new double[n1];
-        double sum = 0;
-        boolean first = false;
-        boolean second = false;
-        for(int i = 0; i < n1; i++){
-            for(int j = 0; j < n1; j++){
-                if (first && !second){
-                    sum += twoArray[i][j];
-                }
-                if (twoArray[i][j] > 0 && first){
-                    second = true;
-                }
-                if (twoArray[i][j] > 0){
-                    first = true;
+        // Вычисление и вывод сумм
+        for (double[] row : matrix) {
+            double sum = findSumBetweenFirstTwoPositive(row);
+            System.out.printf("Сумма между первым и вторым положительным элементами: %.2f\n", sum);
+        }
+        scanner.close();
+    }
+
+    private static double findSumBetweenFirstTwoPositive(double[] row) {
+        int firstPositiveIndex = -1;
+        int secondPositiveIndex = -1;
+        for (int i = 0; i < row.length; i++) {
+            if (row[i] > 0) {
+                if (firstPositiveIndex == -1) {
+                    firstPositiveIndex = i;
+                } else {
+                    secondPositiveIndex = i;
+                    break;
                 }
             }
-            if (!second){
-                sum = 0;
-            }
-            SumArray[i] = sum;
-            second = false;
-            first = false;
-            sum = 0;
         }
 
-        for (int i = 0; i < n1; i++) {
-            System.out.println(SumArray[i]);
+        if (firstPositiveIndex != -1 && secondPositiveIndex != -1) {
+            double sum = 0;
+            for (int i = firstPositiveIndex + 1; i < secondPositiveIndex; i++) {
+                sum += row[i];
+            }
+            return sum;
         }
+        return 0; // Если в строке меньше двух положительных элементов, сумма будет равна 0
     }
 }

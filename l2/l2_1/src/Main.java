@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
@@ -31,5 +32,9 @@ public class Main {
                 System.out.println(arrayList.get(i) + "," + arrayList.get(i).length());
             }
         }
+        System.out.println("Kulinich");
+        Date now = new Date();
+        System.out.println("Задание получено: Fri Feb 09 14:30:00 GMT+03:00 2024");
+        System.out.println("Текущая дата и время: " + now);
     }
 }
