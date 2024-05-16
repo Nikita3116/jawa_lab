@@ -1,5 +1,3 @@
-package Zadanie_1;
-
 import java.util.HashSet;
 import java.util.Scanner;
 
