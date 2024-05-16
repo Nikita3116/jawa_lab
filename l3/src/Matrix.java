@@ -114,7 +114,7 @@ public class Matrix {
                 minSecondNorm = secondNorm;
                 minSecondNormMatrix = matrix;
             }
-        }
+        }   
 
         // Вывод матриц с наименьшей первой и второй нормами
         System.out.println("Matrix with the smallest first norm:");
