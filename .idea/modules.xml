@@ -16,6 +16,10 @@
       <module fileurl="file://$PROJECT_DIR$/l4/l4.iml" filepath="$PROJECT_DIR$/l4/l4.iml" />
       <module fileurl="file://$PROJECT_DIR$/l5/l5.iml" filepath="$PROJECT_DIR$/l5/l5.iml" />
       <module fileurl="file://$PROJECT_DIR$/l6/l6.iml" filepath="$PROJECT_DIR$/l6/l6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/l6/l6_1/l6_1.iml" filepath="$PROJECT_DIR$/l6/l6_1/l6_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/l6/l6_2/l6_2.iml" filepath="$PROJECT_DIR$/l6/l6_2/l6_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/l6/l6_3/l6_3.iml" filepath="$PROJECT_DIR$/l6/l6_3/l6_3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/l6/l6_4/l6_4.iml" filepath="$PROJECT_DIR$/l6/l6_4/l6_4.iml" />
     </modules>
   </component>
 </project>
