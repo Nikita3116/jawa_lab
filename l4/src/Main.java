@@ -1,3 +1,6 @@
+//	interface Сотрудник <- class Инженер <- class Руководитель.
+//	interface Здание <- abstract class Общественное Здание <- class Театр.
+
 public class Main {
     public static void main(String[] args) {
         // Создание объекта Manager

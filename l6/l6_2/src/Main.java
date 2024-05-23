@@ -1,3 +1,5 @@
+//	Сложить два многочлена заданной степени, если коэффициенты многочленов хранятся в объекте HashMap.
+
 import java.util.HashMap;
 import java.util.Map;
 
