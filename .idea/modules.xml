@@ -30,6 +30,11 @@
       <module fileurl="file://$PROJECT_DIR$/l7/l7_7/l7_7.iml" filepath="$PROJECT_DIR$/l7/l7_7/l7_7.iml" />
       <module fileurl="file://$PROJECT_DIR$/l7/l7_8/l7_8.iml" filepath="$PROJECT_DIR$/l7/l7_8/l7_8.iml" />
       <module fileurl="file://$PROJECT_DIR$/l8/l8.iml" filepath="$PROJECT_DIR$/l8/l8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/l9/l9.iml" filepath="$PROJECT_DIR$/l9/l9.iml" />
+      <module fileurl="file://$PROJECT_DIR$/l9/l9_1/l9_1.iml" filepath="$PROJECT_DIR$/l9/l9_1/l9_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/l9/l9_2/l9_2.iml" filepath="$PROJECT_DIR$/l9/l9_2/l9_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/l9/l9_3/l9_3.iml" filepath="$PROJECT_DIR$/l9/l9_3/l9_3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/l9/l9_4/l9_4.iml" filepath="$PROJECT_DIR$/l9/l9_4/l9_4.iml" />
     </modules>
   </component>
 </project>
